@@ -9,6 +9,7 @@
 </head>
 <body>
     <?php
+        //Start of Code
         include 'assets/script/connection.php';
     ?>
     <header class="head">
@@ -28,6 +29,7 @@
         <article class="news">
             <h1>Prediksi Nominasi Game Awards 2024</h1>
             <?php 
+            //Menampilkan card berita terbaru
             $cardNo = 1;
             $data = mysqli_query($connection, "SELECT * FROM daftar_berita");
             while ($d = mysqli_fetch_array($data)){
@@ -43,6 +45,7 @@
                     </div>
             <?php
             }
+            // End of the Code
             ?>
         </article>
         <aside>
