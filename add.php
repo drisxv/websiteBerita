@@ -9,7 +9,7 @@
 <body>
     <h1>PENDATAAN BARANG</h1><br>
     <div class="form_div">
-    <form method="POST" action="assets/script/Action_add.php">
+    <form method="POST" action="assets/script/action_add.php">
         <table>
             <tr>
                 <td>Image Path</td>
