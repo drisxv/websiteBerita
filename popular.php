@@ -6,7 +6,6 @@
     <title>Prediksi Nominasi Game Awards 2024</title>
     <link rel="stylesheet" href="assets/styles/style.css">
     <link rel="icon" href="assets/img/logo.png" type="png">
-    <script type="text/javascript" src="assets/script/script.js" ></script>
 </head>
 <body>
     <!--Koneksi-->
@@ -68,5 +67,6 @@
             </ul>
         </div>
     </footer>
+    <script type="text/javascript" src="assets/script/script.js" ></script>
 </body>
 </html>
