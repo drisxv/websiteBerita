@@ -9,6 +9,7 @@
     <script type="text/javascript" src="assets/script/script.js" ></script>
 </head>
 <body>
+    <!--Koneksi-->
     <?php
         include 'assets/script/connection.php';
     ?>
@@ -30,6 +31,7 @@
         <article class="news">
             <h1>Terpopuler di Prediksi Nominasi Game Awards 2024</h1>
             <?php
+            //Memunculkan card dari berita populer
             $cardNo = 1;
             $data = mysqli_query($connection, "SELECT * FROM daftar_berita ORDER BY watching_time DESC");
             while ($d = mysqli_fetch_array($data)){
@@ -45,6 +47,7 @@
                     </div>
             <?php
             }
+            //End of the code
             ?>
         </article>
         <aside>
