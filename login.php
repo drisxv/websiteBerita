@@ -57,18 +57,38 @@ if (isset($_POST["login"])) {
 
     /*
 // untuk bagian atmin saja
-    <?php
-        session_start();
+<?php
+session_start();
 
-        if( !isset($_SESSION["login"])) {
-        header("Location: login.php");
-        exit;
+require 'connection.php';
+
+if (isset($_COOKIE['login']) && isset($_COOKIE['key'])) {
+    $key = $_COOKIE['key'];
+
+    $result = mysqli_query($koneksi, "SELECT username FROM login WHERE username = '$key'");
+    $row = mysqli_fetch_assoc($result);
+
+    if ($row && $key === $row['username']) {
+        $_SESSION['login'] = true;
     }
+}
 
-require 'koneksi.php';
-
-
+if (!isset($_SESSION["login"])) {
+    header("Location: login.php");
+    exit;
+}
+echo "test";
 ?>
+
+// logout
+<?php
+session_start();
+$_SESSION = [];
+session_unset();
+session_destroy();
+
+header("Location: login.php");
+exit;
 
 
     */
