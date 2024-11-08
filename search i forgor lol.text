@@ -1,0 +1,87 @@
+// UNTUK AJAX !!!
+var keyword = document.getElementById('keyword');
+var searchButton = document.getElementById('searchButton')
+var container = document.getElementById('container');
+
+keyword.addEventListener('keyup',function(){
+    var xhr = new XMLHttpRequest();
+
+    xhr.onreadystatechange = function() {
+        if ( xhr.readyState == 4 && xhr.status == 200) {
+            container.innerHTML = xhr.responseText;
+        }
+    }
+
+    xhr.open('GET', 'ajax/searchAJAX.php?keyword=' + keyword.value, true);
+    xhr.send();
+});
+
+// php search
+<?php
+    include 'assets/script/connection.php';
+
+    function query($query){
+    include 'assets/script/connection.php';
+    $result = mysqli_query($connection, $query);
+    $rows = [];
+    while ($row  = mysqli_fetch_assoc($result)) {
+        $rows[] = $row;
+    }
+    return $rows;
+    }
+
+    function search($keyword) {
+        $query = "SELECT * FROM daftar_berita WHERE judul_berita LIKE '%$keyword%'";
+        return query($query);
+    }
+
+
+    if(isset($_POST["search"])) {
+        $data = search($_POST["keyword"]);
+
+    }
+?>
+<form action="" method="post">
+                <li><input type="text" name="keyword" placeholder="Search"></li>
+                <button type="submit" name="search"></button>
+            </form>
+
+// search AJAX php
+<?php
+    include 'assets/script/connection.php';
+
+    function query($query){
+    include 'assets/script/connection.php';
+    $result = mysqli_query($connection, $query);
+    $rows = [];
+    while ($row  = mysqli_fetch_assoc($result)) {
+        $rows[] = $row;
+    }
+    return $rows;
+    }
+
+    function search($keyword) {
+        $query = "SELECT * FROM daftar_berita WHERE judul_berita LIKE '%$keyword%'";
+        return query($query);
+    }
+
+
+    if(isset($_POST["search"])) {
+        $data = search($_POST["keyword"]);
+
+    }
+?>
+            <form action="" method="post">
+
+                <li><input type="text" name="keyword" placeholder="Search" id="keyword"></li>
+                <button type="submit" name="search" id="searchButton"></button>
+            </form>
+// test php
+<?php
+    include 'assets/script/connection.php';
+    $query = "SELECT * FROM daftar_berita";
+    $data = query($query);
+    $keyword = $_GET["keyword"];
+
+    var_dump($data);
+    ?>
