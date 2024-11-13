@@ -96,3 +96,14 @@ function search($keyword) {
     </footer>
 </body>
 </html>
+
+
+function search($keyword)
+{
+    $query = "SELECT * FROM daftar_berita LEFT JOIN daftar_game ON daftar_berita.id_berita = daftar_game.id_game WHERE genre LIKE '%$keyword%' 
+    UNION SELECT * FROM daftar_berita LEFT JOIN daftar_game ON daftar_berita.id_berita = daftar_game.id_game WHERE judul_berita LIKE '%$keyword%'
+    UNION SELECT * FROM daftar_berita LEFT JOIN daftar_game ON daftar_berita.id_berita = daftar_game.id_game WHERE judul_game LIKE '%$keyword%'";
+    return query($query);
+}
+
+$data = query("SELECT * FROM daftar_berita LEFT JOIN daftar_game ON daftar_berita.id_berita = daftar_game.id_game");
