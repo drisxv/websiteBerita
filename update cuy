@@ -1,0 +1,5 @@
+$update_count_query = "UPDATE daftar_berita SET watching_time = watching_time + 1 WHERE id_berita = '$id_berita'";
+                mysqli_query($connection, $update_count_query);
+
+login tambahan
+<p><a href="forgot_password.php">Lupa Password?</a></p>
